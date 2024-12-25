@@ -1,4 +1,4 @@
-## This is a security test for arc browser.
+## This is a security test for browser.
 ### Steps to reproduce:
 1. Open the 404spoof.html
 2. Hit ctrl+u
