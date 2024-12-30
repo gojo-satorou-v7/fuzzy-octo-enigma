@@ -8,10 +8,10 @@ self.addEventListener('install', function(event) {
   
   onfetch=e=>{
     console.log(e.request.url);
-    if(e.request.url=="https://gojo-satorou-v7.github.io/fuzzy-octo-enigma/data"){
+    if(e.request.url=="https://gojo-satorou-v7.github.io/fuzzy-octo-enigma/404.html"){
         console.log("match");
       e.respondWith(fetch("/").then(()=>{
-          return Response.redirect("data://hackerone.com/html,<script>alert(1337)</script>");
+          return Response.redirect("https://example.com");
       }));
     }
   }
