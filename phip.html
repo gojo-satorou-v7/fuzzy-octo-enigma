@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Protocol Handler</title>
+</head>
+<body>
+  <h1>Register Mailto Protocol Handler</h1>
+  <p>Click the button below to make this website handle <code>mailto:</code> links.</p>
+  <button id="register-handler">Register Mailto Handler</button>
+
+  <script>
+    // Check if the browser supports protocol handler registration
+    if ('registerProtocolHandler' in navigator) {
+      document.getElementById('register-handler').addEventListener('click', () => {
+        try {
+          // Register the protocol handler
+          navigator.registerProtocolHandler(
+            'mailto', // Protocol to handle
+            `${window.location.origin}/compose?to=%s`, // URL template
+            'My Custom Mail App' // Name of the app
+          );
+          alert('Protocol handler registered successfully!');
+        } catch (error) {
+          console.error('Error registering protocol handler:', error);
+          alert('Failed to register protocol handler. Check console for details.');
+        }
+      });
+    } else {
+      alert('Your browser does not support protocol handler registration.');
+      document.getElementById('register-handler').disabled = true;
+    }
+  </script>
+</body>
+</html>
