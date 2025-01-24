@@ -19,9 +19,9 @@
  <body> 
   <script>
 function a(){
-	window.open('https://google.com', 'x');
+	window.open('https://attacker--poc--intent-paint--origin-spoof.cr.vuln.foo', 'x');
 	setTimeout(function(){
-		window.open('https://attacker--poc--intent-paint--origin-spoof.cr.vuln.foo', 'x');
+		window.open('https://victim--poc--intent-paint--origin-spoof.cr.vuln.foo', 'x');
 	}, 5000);
 }
 </script> 
