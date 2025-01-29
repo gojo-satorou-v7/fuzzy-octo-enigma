@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parent Page</title>
+</head>
+<body>
+  <h1>Parent Page</h1>
+  <input id="otp" type="text" placeholder="Waiting for OTP..." readonly />
+  <iframe src="https://sub.example.com/iframe.html" width="100%" height="300"></iframe>
+
+  <script>
+    async function getOTP() {
+      try {
+        const otp = await navigator.credentials.get({
+          otp: { transport: ['sms'] },
+          signal: new AbortController().signal
+        });
+        document.getElementById('otp').value = otp.code;
+      } catch (error) {
+        console.error('Error fetching OTP on parent:', error);
+      }
+    }
+
+    // Call the function on page load
+    getOTP();
+  </script>
+</body>
+</html>
