@@ -1,0 +1,9 @@
+ <iframe id=demoFrame></iframe>
+    <button onclick="iframeIntended()">iframe site showing intended behavior</button>
+    <button onclick="iframeBypass()">iframe site showing bypass</button>
+    <script>
+    const iframedUrl= "https://gojo-satorou-v7.github.io/fuzzy-octo-enigma/folder1/child.html";
+    const iframeIntended = () => demoFrame.src = iframedUrl;
+    const iframeBypass = () => demoFrame.src = iframedUrl + '?sandbox_header=1';
+  </script>
+    
