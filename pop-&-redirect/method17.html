@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popup Example</title>
+  <script>
+    // Function to open a popup and access its contentDocument
+    function openPopup() {
+      // Open a new popup window
+      const popup = window.open('', 'Popup', 'width=400,height=300');
+
+      // Ensure the popup is accessible and not blocked by the browser
+      if (popup) {
+        // Access the contentDocument of the popup
+        const popupDoc = popup.document;
+
+        // Modify the content of the popup window
+        popupDoc.open();
+        popupDoc.write(`
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Popup Window</title>
+          </head>
+          <body>
+            <h1>Hello from the popup!</h1>
+            <p>This content was dynamically added.</p>
+          </body>
+          </html>
+        `);
+        popupDoc.close();
+      } else {
+        console.error('Popup blocked. Please allow popups for this website.');
+      }
+    }
+
+    // Call the function when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      // Automatically open the popup when the page loads
+      openPopup();
+    });
+  </script>
+</head>
+<body>
+  <h1>Main Window</h1>
+  <p>The popup will automatically open when the page loads.</p>
+</body>
+</html>
